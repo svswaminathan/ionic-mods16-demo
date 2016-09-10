@@ -1,0 +1,11 @@
+<ion-view view-title="Speakers">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-avatar item-icon-right" collection-repeat="speaker in viewModel.speakers track by speaker.name" type="item-text-wrap" href="#/tab/speaker/{{$index}}">
+        <img ng-src={{speaker.photo}}>
+        <h3>{{speaker.name}}</h3>
+        <i class="icon ion-chevron-right icon-accessory"> </i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
