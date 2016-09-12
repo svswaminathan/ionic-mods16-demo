@@ -1,0 +1,21 @@
+<ion-view view-title="Favorites">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon icon-small ion-ios-trash-outline" ng-click="showDeleteButton()"></button>
+    <button class="button button-icon icon icon-small ion-navicon" ng-click="showReorderButton()"></button>
+  </ion-nav-buttons>
+  <ion-content >
+    <div class="card">
+      Mark your favorite sessions from sessions tab, and they will appear here
+    </div>
+    <ion-list show-delete="viewModel.showDeleteButton" show-reorder="viewModel.showReorderButton">
+      <ion-item class="item-text-wrap item-icon-right" ng-repeat="session in viewModel.favoriteSessions">
+        <h2>{{session.topic}}</h2>
+        <h3 style="color:Blue">{{session.venue}}
+          <span class="item-note" style="color:blue">{{session.time}}</span>
+        </h3>
+        <ion-delete-button class="ion-minus-circled" ng-click="viewModel.favoriteSessions.splice($index,1)"></ion-delete-button>
+        <ion-reorder-button class="ion-navicon" on-reorder="moveItem(session, $fromIndex, $toIndex)"></ion-reorder-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

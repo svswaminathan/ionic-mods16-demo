@@ -8,13 +8,43 @@ angular.module('starter.services', [])
       this.venue = venue;
       this.time = time;
     };
+    var favorites = [];
     // Day 1 sessions
     day1Sessions.push(new session("Registration", "", "Reception", "08:00-08:30"));
     day1Sessions.push(new session("Welcome to MODS 2016", "", "Main Hall", "08:30-08:45"));
     day1Sessions.push(new session("We are not Scientists; We are not Engineers; We are Storytellers.", "Scott Davis", "Main Hall", "08:45-09:45"));
     day1Sessions.push(new session("techDifferentiateBusiness = convergence(cloud, cognitive, mobile, userXP, iOT)", "AB Vijay Kumar", "Main Hall", "09:45-10:05"));
     day1Sessions.push(new session("Expo visit/Coffee & Refreshments", "", "", "10:05-10:30"));
-    
+
+    day1Sessions.push(new session("Intro to Async Programming in iOS", "Joe Keeley", "Main Hall", "10:30-11:30"));
+    day1Sessions.push(new session("The Selfie Developer", "Steve Scott", "Hall A", "10:30-11:30"));
+    day1Sessions.push(new session("Developing Cognitive Mobile apps using Watson", "Purushothaman Narayanan, Shubradeep Nandi", "Hall B", "10:30-11:30"));
+    day1Sessions.push(new session("Making Friends with Xcode: Tips & Tricks from Beginner to Advanced", "Laura Savino", "SD Hall", "10:30-11:30"));
+
+    day1Sessions.push(new session("Making iOS Applications Accessible", "Adrian Kosmaczewski", "Main Hall", "11:40-12:40"));
+    day1Sessions.push(new session("Native iOS and Android Development in C#", "Mayur Tendulkar", "Hall A", "11:40-12:40"));
+    day1Sessions.push(new session("Develop, Test, Launch and Track Usage of Mobile Apps on the Cloud", "Anirudh Baskaran", "Hall B", "11:40-12:40"));
+    day1Sessions.push(new session("What IoT Means for Mobile Developers", "Rajesh Jeyapaul", "SD Hall", "11:40-12:40"));
+
+    day1Sessions.push(new session("What's New in JavaScript (ECMAScript 6)", "Scott Davis", "Main Hall", "13:30-14:30"));
+    day1Sessions.push(new session("Developing Cloud-Connected Native iOS, Android & Windows Apps in Xamarin", "Nish Anil", "Hall A", "13:30-14:30"));
+    day1Sessions.push(new session("Make your iPhone See", "Joshua Smith", "Hall B", "13:30-14:30"));
+    day1Sessions.push(new session("Testing in Android and Why You Should Care", "Soham Mondal", "SD Hall", "13:30-14:30"));
+
+    day1Sessions.push(new session("Refactoring iOS Projects", "Adrian Kosmaczewski", "Main Hall", "14:40-15:40"));
+    day1Sessions.push(new session("Workshop - Building Watch Faces for Android Wear", "Chirag Aggarwal", "Hall A", "14:40-18:10"));
+    day1Sessions.push(new session("Extending Content Delivery Networks to Devices", "Vijay Kolli", "Hall B", "14:40-15:40"));
+    day1Sessions.push(new session("Pa55W0rd5 $uck!", "Steve Scott", "SD Hall", "14:40-15:40"));
+
+    day1Sessions.push(new session("Neural Networks on iOS", "Joshua Smith", "Main Hall", "16:00-17:00"));
+    day1Sessions.push(new session("Continuous Delivery for iOS, Android & Windows Apps using Xamarin, VSTS & HockeyApp", "Nish Anil", "Hall B", "16:00-17:00"));
+    day1Sessions.push(new session("Cracking the Chatbot Code", "Elvis Joel D'Souza", "SD Hall", "16:00-17:00"));
+
+    day1Sessions.push(new session("Advanced Beginner Git", "Laura Savino", "Main Hall", "17:10-18:10"));
+    day1Sessions.push(new session("Build your Own Bot to Capture VR 360 Images", "Tushar Choudhary", "Hall B", "17:10-17:40"));
+    day1Sessions.push(new session("Android and File System Chemistry", "Satish Patel", "Hall B", "17:40-18:10"));
+    day1Sessions.push(new session("React Native for Android", "Anirudh Sundararaman", "SD Hall", "17:10-17:40"));
+    day1Sessions.push(new session("Android Open Source Libraries", "Anirudh Sundararaman", "SD Hall", "17:40-18:10"));
 
     // Day 2 sessions
     day2Sessions.push(new session("Registration", "", "Reception", "08:00-08:30"));
@@ -23,13 +53,40 @@ angular.module('starter.services', [])
     day2Sessions.push(new session("Reading in a New Language", "Laura Savino", "Main Hall", "09:45-10:30"));
     day2Sessions.push(new session("Expo visit/Coffee & Refreshments", "", "", "10:30-10:50"));
 
-    return {
+    day2Sessions.push(new session("A Modern Mobile Web Journey: From AMP to PWA", "Paul Bakaus", "Main Hall", "10:50-11:50"));
+    day2Sessions.push(new session("Introduction to the Intel® IoT Gateway", "Mohammed Iqbal Ahmed", "Hall A", "10:50-11:50"));
+    day2Sessions.push(new session("Make Your Good Apps Great with MobileFirst Foundation", "Ajay Chebbi", "Hall B", "10:50-11:50"));
+    day2Sessions.push(new session("Speaking To Your Phone: Beyond Siri", "Joshua Smith", "SD Hall", "10:50-11:50"));
+
+    day2Sessions.push(new session("MEAN 2.0 Architecture", "Scott Davis", "Main Hall", "12:00-13:00"));
+    day2Sessions.push(new session("Go From Idea to App Faster with Mobile Services on Bluemix", "Chethan Settipalli", "Hall A", "12:00-13:00"));
+    day2Sessions.push(new session("Adding Intelligence to your Apps using Microsoft Cognitive Services", "Mayur Tendulkar", "Hall B", "12:00-13:00"));
+    day2Sessions.push(new session("iOS Localization with Modern Xcode Tools", "Laura Savino", "SD Hall", "12:00-13:00"));
+
+    day2Sessions.push(new session("MVVM-C In Practice", "Steve Scott", "Main Hall", "13:50-14:50"));
+    day2Sessions.push(new session("SWIFTly, Go Cloud", "Vidyasagar Machupalli", "Hall A", "13:50-14:50"));
+    day2Sessions.push(new session("Leverage Angular 2 to Build Native Android/iOS Mobile Apps with Single Code Base", "Lohith G N", "Hall B", "13:50-14:50"));
+    day2Sessions.push(new session("Tools for Continuous Delivery in Android", "Leena S N", "SD Hall", "13:50-14:50"));
+
+    day2Sessions.push(new session("Hands on with Material Design", "Scott Davis", "Main Hall", "15:00-16:00"));
+    day2Sessions.push(new session("Mutative Design - User, not Users", "Faiz Malkani", "Hall A", "15:00-16:00"));
+    day2Sessions.push(new session("Making Smarter Games in iOS", "Joshua Smith", "Hall B", "15:00-16:00"));
+    day2Sessions.push(new session("Developing Apps for Android Auto", "Arnav Gupta", "SD Hall", "15:00-16:00"));
+
+    day2Sessions.push(new session("Pro Storyboard Techniques", "Joe Keeley", "Main Hall", "16:10-17:10"));
+    day2Sessions.push(new session("Build Kab Milega? Jenkins & Piri to Your Rescue", "Tushar Choudhary", "Hall A", "16:10-17:10"));
+    day2Sessions.push(new session("May the #Perf be With You", "Prajyot Mainkar", "Hall B", "16:10-16:40"));
+    day2Sessions.push(new session("Gradle on Steroids", "Chirag Aggarwal, Sumit Das", "Hall B", "16:40-17:10"));
+    day2Sessions.push(new session("Rapid Mobile App Development using Ionic", "Swaminathan Vetri", "SD Hall", "16:10-17:10"));
+
+    return {  
       FirstDaySessions: function () {
         return day1Sessions;
       },
       SecondDaySessions: function () {
         return day2Sessions;
-      }
+      },
+      Favorites : favorites
     };
   })
   .factory('Speakers', function () {

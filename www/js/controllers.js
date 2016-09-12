@@ -1,8 +1,26 @@
 angular.module('starter.controllers', [])
 
-  .controller('DashCtrl', function ($scope) { })
+  .controller('FavoritesCtrl', function ($scope, Sessions) {
+    $scope.viewModel = {};
+    $scope.init = function () {
+      $scope.viewModel.favoriteSessions = Sessions.Favorites;
+      $scope.viewModel.showDeleteButton = false;
+    }
+    $scope.showDeleteButton = function () {
+      $scope.viewModel.showDeleteButton = !$scope.viewModel.showDeleteButton;
+    }
+    $scope.showReorderButton = function () {
+      $scope.viewModel.showReorderButton = !$scope.viewModel.showReorderButton;
+    }
 
-  .controller('SessionsCtrl', function ($scope, Sessions) {
+    $scope.moveItem = function (item, fromIndex, toIndex) {
+      $scope.viewModel.favoriteSessions.splice(fromIndex, 1);
+      $scope.viewModel.favoriteSessions.splice(toIndex, 0, item);
+    };
+    $scope.init();
+  })
+
+  .controller('SessionsCtrl', function ($scope, $ionicListDelegate, Sessions) {
     $scope.viewModel = {
       isDay1Selected: true,
       isDay2Selected: false,
@@ -14,16 +32,33 @@ angular.module('starter.controllers', [])
     $scope.toggleDay = function () {
       $scope.viewModel.isDay1Selected = !$scope.viewModel.isDay1Selected;
       if ($scope.viewModel.isDay1Selected) {
-        $scope.viewModel.sessions = firstDaySessions;
+        $scope.viewModel.sessions = groupSessionsByTime(firstDaySessions);
       }
       else {
-        $scope.viewModel.sessions = secondDaySessions;
+        $scope.viewModel.sessions = groupSessionsByTime(secondDaySessions);
       }
       $scope.viewModel.isDay2Selected = !$scope.viewModel.isDay2Selected;
     }
+    $scope.markFavorite = function (session) {
+      Sessions.Favorites.push(session);
+      $ionicListDelegate.closeOptionButtons();
+    }
 
     $scope.init = function () {
-      $scope.viewModel.sessions = firstDaySessions;
+      var firstDaySessionsByTime = groupSessionsByTime(firstDaySessions);
+      $scope.viewModel.sessions = firstDaySessionsByTime;
+      // console.log(firstDaySessionsByTime);
+    }
+
+    var groupSessionsByTime = function(sessions){
+     return  _.chain(sessions)
+              .groupBy('time')	
+              .toPairs()
+              .map(function (pair) 
+              { 
+                return _.zipObject(['time', 'sessions'], pair); 
+              })
+              .value();
     }
 
     $scope.init();

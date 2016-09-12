@@ -1,26 +1,23 @@
 <ion-view view-title="Sessions">
-  <ion-content>
+  <ion-header-bar class="bar-subheader">
     <div class="button-bar padding">
-      <a class="button" ng-class="{'button-balanced' : viewModel.isDay1Selected}" ng-click="toggleDay()">Day 1</a>
-      <a class="button" ng-class="{'button-balanced' : viewModel.isDay2Selected}" ng-click="toggleDay()">Day 2</a>
+      <a class="button" ng-class="{'button-positive' : viewModel.isDay1Selected}" ng-click="toggleDay()">Day 1</a>
+      <a class="button" ng-class="{'button-positive' : viewModel.isDay2Selected}" ng-click="toggleDay()">Day 2</a>
     </div>
+  </ion-header-bar>
+  <ion-content has-subheader="true">
     <ion-list>
-      <!--<ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>-->
-      <ion-item class="item-text-wrap item-icon-right" ng-repeat="session in viewModel.sessions">
-        <h2 style="color:Red">{{session.topic}}</h2>
-        <h3 style="color:Black">{{session.speaker}}</h3>
-        <h4 style="color:Green">{{session.venue}}</h4>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
+      <div ng-repeat="session in viewModel.sessions">
+        <div class="item item-divider"> {{session.time}}</div>
+        <ion-item class="item-text-wrap" ng-repeat="sessionByTime in session.sessions">
+          <h2>{{sessionByTime.topic}}</h2>
+          <h3 style="color:Blue">{{sessionByTime.speaker}}</h3>
+          <h4 style="color:Green">{{sessionByTime.venue}}
+            <!--<span class="item-note" style="color:Green">{{session.time}}</span>-->
+          </h4>
+          <ion-option-button class="button-balanced" ng-click="markFavorite(sessionByTime)">Favorite</ion-option-button>
+        </ion-item>
+      </div>
     </ion-list>
   </ion-content>
 </ion-view>
