@@ -1,31 +1,13 @@
 <ion-view view-title="Sponsors">
     <ion-content>
-        <div class="card">
-            <div class="item item-divider">Platinum Sponsors</div>
+        <div class="card" ng-repeat="sponsor in viewModel.sponsors">
+            <div class="item item-divider">{{sponsor.sponsorType}}</div>
             <div class="item">
                 <ion-slide-box auto-play="true" slide-interval="1000" does-continue="true" show-pager="false">
-                    <ion-slide ng-repeat="sponsor in viewModel.sponsors">
-                        <img ng-src={{sponsor}} class="item-image">
+                    <ion-slide ng-repeat="sponsorName in sponsor.sponsorNames">
+                        <img ng-src={{sponsorName}} class="item-image">
                     </ion-slide>
                 </ion-slide-box>
-            </div>
-        </div>
-        <div class="card">
-            <div class="item item-divider">Gold Sponsors</div>
-            <div class="item">
-                <ion-slide-box auto-play="true" slide-interval="1000" does-continue="true" show-pager="false">
-                    <ion-slide ng-repeat="sponsor in viewModel.goldSponsors">
-                        <img ng-src={{sponsor}} class="item-image">
-                    </ion-slide>
-            </div>
-        </div>
-        <div class="card">
-            <div class="item item-divider">DevelopMentor Sponsors</div>
-            <div class="item">
-                <ion-slide-box auto-play="true" slide-interval="1000" does-continue="true" show-pager="false">
-                    <ion-slide ng-repeat="sponsor in viewModel.devSponsors">
-                        <img ng-src={{sponsor}} class="item-image">
-                    </ion-slide>
             </div>
         </div>
     </ion-content>

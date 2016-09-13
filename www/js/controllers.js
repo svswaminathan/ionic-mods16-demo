@@ -50,44 +50,38 @@ angular.module('starter.controllers', [])
       // console.log(firstDaySessionsByTime);
     }
 
-    var groupSessionsByTime = function(sessions){
-     return  _.chain(sessions)
-              .groupBy('time')	
-              .toPairs()
-              .map(function (pair) 
-              { 
-                return _.zipObject(['time', 'sessions'], pair); 
-              })
-              .value();
+    var groupSessionsByTime = function (sessions) {
+      return _.chain(sessions)
+        .groupBy('time')
+        .toPairs()
+        .map(function (pair) {
+          return _.zipObject(['time', 'sessions'], pair);
+        })
+        .value();
     }
 
     $scope.init();
   })
-  .controller('SpeakersCtrl', function ($scope, Speakers) {
+  .controller('SpeakersCtrl', function ($scope, $ionicPopup, Speakers) {
     $scope.viewModel = {};
+    $scope.viewModel.searchText = "";
     $scope.viewModel.speakers = Speakers.AllSpeakers();
+    $scope.refreshSpeakers = function () {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Refresh Complete',
+        template: 'No new speakers added...'
+      });
+      $scope.$broadcast('scroll.refreshComplete');
+    }
+    $scope.clearSearch = function () {
+      $scope.viewModel.searchText = "";
+    }
   })
   .controller('SpeakerDetailCtrl', function ($scope, $stateParams, Speakers) {
     $scope.viewModel = {};
     $scope.viewModel.speaker = Speakers.getSpeaker($stateParams.speakerId);
   })
-  .controller('SponsorsCtrl', function ($scope) {
+  .controller('SponsorsCtrl', function ($scope, Sponsors) {
     $scope.viewModel = {};
-    $scope.viewModel.sponsors = [];
-    $scope.viewModel.sponsors.push('img/IBM_Logo.jpg');
-    $scope.viewModel.sponsors.push('img/AWSLogo.jpg');
-    $scope.viewModel.sponsors.push('img/GoogleLogo.jpg');
-    $scope.viewModel.sponsors.push('img/AkamaiLogo.jpg');
-
-    $scope.viewModel.goldSponsors = [];
-    $scope.viewModel.goldSponsors.push('img/Intel.jpg');
-    $scope.viewModel.goldSponsors.push('img/MicrosoftLogo.jpg');
-
-    $scope.viewModel.devSponsors = [];
-    $scope.viewModel.devSponsors.push('img/NestAway.jpg');
-    $scope.viewModel.devSponsors.push('img/EyeZen.jpg');
-    $scope.viewModel.devSponsors.push('img/ProgressLogo.jpg');
-    $scope.viewModel.devSponsors.push('img/MobignosisLogo.jpg');
-    $scope.viewModel.devSponsors.push('img/TalkativeParentsLogo.jpg');
-    $scope.viewModel.devSponsors.push('img/GreyNubo.jpg');
+    $scope.viewModel.sponsors = Sponsors.All;
   });

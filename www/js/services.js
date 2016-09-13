@@ -79,14 +79,14 @@ angular.module('starter.services', [])
     day2Sessions.push(new session("Gradle on Steroids", "Chirag Aggarwal, Sumit Das", "Hall B", "16:40-17:10"));
     day2Sessions.push(new session("Rapid Mobile App Development using Ionic", "Swaminathan Vetri", "SD Hall", "16:10-17:10"));
 
-    return {  
+    return {
       FirstDaySessions: function () {
         return day1Sessions;
       },
       SecondDaySessions: function () {
         return day2Sessions;
       },
-      Favorites : favorites
+      Favorites: favorites
     };
   })
   .factory('Speakers', function () {
@@ -138,8 +138,40 @@ angular.module('starter.services', [])
       AllSpeakers: function () {
         return speakersByName;
       },
-      getSpeaker: function (id) {
-        return speakersByName[id];
+      getSpeaker: function (name) {
+        return _.find(speakersByName,['name',name]);
       }
+    }
+  })
+  .factory('Sponsors', function () {
+    var sponsors = [];
+    var sponsor = function (sponsorType, sponsorNames) {
+      this.sponsorType = sponsorType;
+      this.sponsorNames = sponsorNames;
+    }
+    var platinumSponsors = [];
+    platinumSponsors.push('img/IBM_Logo.jpg');
+    platinumSponsors.push('img/AWSLogo.jpg');
+    platinumSponsors.push('img/GoogleLogo.jpg');
+    platinumSponsors.push('img/AkamaiLogo.jpg');
+
+    var goldSponsors = [];
+    goldSponsors.push('img/Intel.jpg');
+    goldSponsors.push('img/MicrosoftLogo.jpg');
+
+    var devSponsors = [];
+    devSponsors.push('img/NestAway.jpg');
+    devSponsors.push('img/EyeZen.jpg');
+    devSponsors.push('img/ProgressLogo.jpg');
+    devSponsors.push('img/MobignosisLogo.jpg');
+    devSponsors.push('img/TalkativeParentsLogo.jpg');
+    devSponsors.push('img/GreyNubo.jpg');
+
+    sponsors.push(new sponsor('Platinum Sponsors', platinumSponsors));
+    sponsors.push(new sponsor('Gold Sponsors', goldSponsors));
+    sponsors.push(new sponsor('Developmentor Sponsors', devSponsors));
+
+    return {
+      All: sponsors
     }
   });

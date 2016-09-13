@@ -1,8 +1,8 @@
 <ion-view view-title="Sessions">
   <ion-header-bar class="bar-subheader">
     <div class="button-bar padding">
-      <a class="button" ng-class="{'button-positive' : viewModel.isDay1Selected}" ng-click="toggleDay()">Day 1</a>
-      <a class="button" ng-class="{'button-positive' : viewModel.isDay2Selected}" ng-click="toggleDay()">Day 2</a>
+      <a class="button button-small" ng-class="{'button-positive' : viewModel.isDay1Selected}" ng-click="toggleDay()">Day 1</a>
+      <a class="button button-small" ng-class="{'button-positive' : viewModel.isDay2Selected}" ng-click="toggleDay()">Day 2</a>
     </div>
   </ion-header-bar>
   <ion-content has-subheader="true">
@@ -12,10 +12,8 @@
         <div class="item item-divider"> {{session.time}}</div>
         <ion-item class="item-text-wrap" ng-repeat="sessionByTime in session.sessions">
           <h2>{{sessionByTime.topic}}</h2>
-          <h3 style="color:Blue">{{sessionByTime.speaker}}</h3>
-          <h4 style="color:Green">{{sessionByTime.venue}}
-            <!--<span class="item-note" style="color:Green">{{session.time}}</span>-->
-          </h4>
+          <h3 class="positive">{{sessionByTime.speaker}}</h3>
+          <h3 class="balanced">{{sessionByTime.venue}}</h3>
           <ion-option-button class="button-balanced" ng-click="markFavorite(sessionByTime)">Favorite</ion-option-button>
         </ion-item>
       </div>
